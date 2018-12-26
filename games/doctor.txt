@@ -1,0 +1,14 @@
+
+definite {
+    dekk is a game about a psychiatrist who plays a game with his patients while he
+    listens to what they have to say.
+
+    gameplay {
+        you can unlock patients as you play, each patient better than the last
+        you want to help them, and help them with their treatment
+    }
+}
+
+maybe {
+    beating some patients helps them and "cures" them, but others it hurts
+}

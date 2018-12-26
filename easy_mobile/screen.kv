@@ -1,0 +1,17 @@
+<Sprite>:
+    keep_ratio: True
+    canvas:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            texture: self.texture
+            size: self.getWidth(), self.getHeight()
+            pos: self.getX(), self.getY()
+
+<ScreenWidget>:
+    canvas.before:
+        Color:
+            rgb: (1,0,0)
+        Rectangle:
+            size: (self.width,self.height)
+
