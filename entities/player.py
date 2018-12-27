@@ -315,26 +315,26 @@ class Mark(Player):
                                 width=SCREEN_WIDTH, height=SCREEN_WIDTH),
                          [
                                'img/mark_speak/hello.png',
-                             #   'img/mark_speak/i_dont_feel_well.png',
-                             #   'img/mark_speak/my_heart_is_heavy.png',
-                             #   'img/mark_speak/i_feel_alone.png',
-                             #   'img/mark_speak/what_do_i_do.png',
-                             #   'img/mark_speak/im_glad.png',
-                             #   'img/mark_speak/i_get_afraid.png',
-                             #   'img/mark_speak/and_youre_nice.png',
-                             #   'img/mark_speak/i_would_be_gone.png',
-                             #   'img/mark_speak/in_my_bed.png',
-                             #   'img/mark_speak/in_peaceful_sleep.png',
-                             #   'img/mark_speak/i_wouldnt_hurt.png',
-                             #   'img/mark_speak/maybe.png',
-                             #   'img/mark_speak/would_be_better.png',
-                             #   'img/mark_speak/if_i_were_gone.png',
-                             #   'img/mark_speak/if_this_is_the_last.png',
-                             #   'img/mark_speak/i_want_you_to_know.png',
-                             #   'img/mark_speak/you_did_your_best.png',
-                             #   'img/mark_speak/im_too_broken.png',
-                             #   'img/mark_speak/so_goodbye.png',
-                             #   'img/mark_speak/goodbye.png',
+                               'img/mark_speak/i_dont_feel_well.png',
+                               'img/mark_speak/my_heart_is_heavy.png',
+                               'img/mark_speak/i_feel_alone.png',
+                               'img/mark_speak/what_do_i_do.png',
+                               'img/mark_speak/im_glad.png',
+                               'img/mark_speak/i_get_afraid.png',
+                               'img/mark_speak/and_youre_nice.png',
+                               'img/mark_speak/i_would_be_gone.png',
+                               'img/mark_speak/in_my_bed.png',
+                               'img/mark_speak/in_peaceful_sleep.png',
+                               'img/mark_speak/i_wouldnt_hurt.png',
+                               'img/mark_speak/maybe.png',
+                               'img/mark_speak/would_be_better.png',
+                               'img/mark_speak/if_i_were_gone.png',
+                               'img/mark_speak/if_this_is_the_last.png',
+                               'img/mark_speak/i_want_you_to_know.png',
+                               'img/mark_speak/you_did_your_best.png',
+                               'img/mark_speak/im_too_broken.png',
+                               'img/mark_speak/so_goodbye.png',
+                               'img/mark_speak/goodbye.png',
                          ])
 
 
@@ -345,14 +345,14 @@ class Lucy(Player):
                                 width=SCREEN_WIDTH, height=SCREEN_WIDTH),
                          [
                              'img/lucy_speak/hello.png',
-                            #  'img/lucy_speak/i_had_an_episode.png',
-                            #  'img/lucy_speak/i_sat_in_my_room.png',
-                            #  'img/lucy_speak/im_so_sorry.png',
-                            #  'img/lucy_speak/i_grabbed_my_knife.png',
-                            #  'img/lucy_speak/and_i_felt_the_blade.png',
-                            #  'img/lucy_speak/it_made_me_feel_at_home.png',
-                            #  'img/lucy_speak/it_didnt_feel_good.png',
-                            #  'img/lucy_speak/but_it_felt_easier.png',
+                             'img/lucy_speak/i_had_an_episode.png',
+                             'img/lucy_speak/i_sat_in_my_room.png',
+                             'img/lucy_speak/im_so_sorry.png',
+                             'img/lucy_speak/i_grabbed_my_knife.png',
+                             'img/lucy_speak/and_i_felt_the_blade.png',
+                             'img/lucy_speak/it_made_me_feel_at_home.png',
+                             'img/lucy_speak/it_didnt_feel_good.png',
+                             'img/lucy_speak/but_it_felt_easier.png',
                          ])
 
     def buildGame(self):
@@ -591,14 +591,14 @@ class Ava(Player):
                                 width=SCREEN_WIDTH, height=SCREEN_WIDTH),
                          [
                              'img/lucy_speak/hello.png',
-                             #  'img/lucy_speak/i_had_an_episode.png',
-                             #  'img/lucy_speak/i_sat_in_my_room.png',
-                             #  'img/lucy_speak/im_so_sorry.png',
-                             #  'img/lucy_speak/i_grabbed_my_knife.png',
-                             #  'img/lucy_speak/and_i_felt_the_blade.png',
-                             #  'img/lucy_speak/it_made_me_feel_at_home.png',
-                             #  'img/lucy_speak/it_didnt_feel_good.png',
-                             #  'img/lucy_speak/but_it_felt_easier.png',
+                            #   'img/lucy_speak/i_had_an_episode.png',
+                            #   'img/lucy_speak/i_sat_in_my_room.png',
+                            #   'img/lucy_speak/im_so_sorry.png',
+                            #   'img/lucy_speak/i_grabbed_my_knife.png',
+                            #   'img/lucy_speak/and_i_felt_the_blade.png',
+                            #   'img/lucy_speak/it_made_me_feel_at_home.png',
+                            #   'img/lucy_speak/it_didnt_feel_good.png',
+                            #   'img/lucy_speak/but_it_felt_easier.png',
                          ])
 
     def buildGame(self):
@@ -764,13 +764,14 @@ class Ava(Player):
         #         self.screen.append(GreenKnight(x, 7))
         #     if even(x):
         #         self.screen.append(GreenKnight(x, 6))
-        self.screen.append(GreenKing(2, 7))
+        self.screen.append(GreenKing(2, 6))
+        self.screen.append(GreenKing(3, 6))
         self.screen.append(GreenKing(3, 7))
-        self.screen.append(GreenKing(4, 7))
+        self.screen.append(GreenKing(4, 6))
         
 
         for x in range(0, 7):
-            self.screen.append(WhiteKing(x, 1))
+            self.screen.append(WhiteKnight(x, 1))
             # if even(x):
             #     self.screen.append(WhiteQueen(x, 0))
             self.screen.append(WhiteQueen(x, 0))

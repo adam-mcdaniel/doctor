@@ -843,7 +843,7 @@ class GreenKing(BlackPiece):
     def update(self, screen):
         x, y = self.toBoardPos(self.getX(), self.getY())
         if self.moved:
-            if not randint(0, 3):
+            if not randint(0, 2):
                 screen.append(
                     GreenKing(self.save_x, self.save_y)
                 )

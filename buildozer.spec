@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = dekk
+title = doctor
 
 # (str) Package name
-package.name = dekk
+package.name = doctor
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.dekk
+package.domain = org.doctor
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -75,7 +75,7 @@ osx.kivy_version = 1.9.1
 #
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = True
 
 # (string) Presplash background color (for new android toolchain)
 # Supported formats are: #RRGGBB #AARRGGBB or one of the following names:
@@ -95,6 +95,11 @@ android.api = 19
 
 # (int) Android SDK version to use
 #android.sdk = 24
+
+sudo apt update
+sudo apt install oracle-java9-installer
+sudo apt-get install oracle-java9-set-default
+javac -version
 
 # (str) Android NDK version to use
 android.ndk = 10.3.2

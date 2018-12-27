@@ -40,7 +40,7 @@ class Doctor:
         self.state = self.introInit
 
         # uncomment to skip intro
-        self.transition(self.mainMenuInit, self.mainMenuUpdate)
+        # self.transition(self.mainMenuInit, self.mainMenuUpdate)
 
         self.state()
 
