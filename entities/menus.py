@@ -79,12 +79,17 @@ class PatientMenu:
                               "img/lucy.png", "img/lucy.png",
                               width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
 
+        self.ava = TapButton(0 * SCREEN_WIDTH/3, (SCREEN_HEIGHT-SCREEN_WIDTH/4)-2*SCREEN_WIDTH/3,
+                             "img/ava.png", "img/ava.png",
+                             width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
+
         print(NUMBER_OF_PATIENTS_UNLOCKED)
         self.selected = None
         self.patients = {
             self.ryan: Ryan(self.screen),
             self.mark: Mark(self.screen),
             self.lucy: Lucy(self.screen),
+            self.ava:  Ava(self.screen),
             None: None
         }
         self.list_of_patients = list(self.patients.keys())
@@ -92,7 +97,7 @@ class PatientMenu:
         self.screen.add(self.list_of_patients[:NUMBER_OF_PATIENTS_UNLOCKED])
 
     def newestPatient(self):
-        return self.list_of_patients[NUMBER_OF_PATIENTS_UNLOCKED]
+        return self.list_of_patients[min(NUMBER_OF_PATIENTS_UNLOCKED, len(self.list_of_patients)-1)]
 
     def getPatient(self):
         return self.patients[self.selected]

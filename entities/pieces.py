@@ -604,6 +604,69 @@ class BlackKnight(BlackPiece):
         return flag
 
 
+class GreenKnight(BlackPiece):
+    def __init__(self, x, y):
+        super().__init__(x, y, image='img/GreenKnight.png')
+        self.save_x = x
+        self.save_y = y
+
+    def check(self, screen, x1, x2, y1, y2):
+        flag = False
+
+        if x2 == x1 - 1 and y2 == y1 - 2:
+            pass
+        elif x2 == x1 + 1 and y2 == y1 - 2:
+            pass
+        elif x2 == x1 - 1 and y2 == y1 + 2:
+            pass
+        elif x2 == x1 + 1 and y2 == y1 + 2:
+            pass
+        elif x2 == x1 - 2 and y2 == y1 - 1:
+            pass
+        elif x2 == x1 + 2 and y2 == y1 - 1:
+            pass
+        elif x2 == x1 - 2 and y2 == y1 + 1:
+            pass
+        elif x2 == x1 + 2 and y2 == y1 + 1:
+            pass
+        else:
+            flag = True
+
+        for sprite in screen:
+            if sprite == self:
+                continue
+
+            if isinstance(sprite, EmptyTile) or isinstance(sprite, BlackPiece):
+                sx, sy = self.toBoardPos(sprite.getX(), sprite.getY())
+                if x2 == sx and y2 == sy:
+                    flag = True
+
+        return flag
+
+    def movePiece(self, x, y):
+        self.save_x, self.save_y = self.toBoardPos(self.getX(), self.getY())
+
+        self.goto(x * WIDTH,
+                  y * HEIGHT + START_HEIGHT)
+        self.moved = True
+        
+        self.set()
+
+    def update(self, screen):
+        x, y = self.toBoardPos(self.getX(), self.getY())
+        if self.moved:
+            screen.append(
+                BlackKing(self.save_x, self.save_y)
+            )
+
+            for sprite in screen:
+                if isinstance(sprite, WhitePiece):
+                    sx, sy = self.toBoardPos(sprite.getX(), sprite.getY())
+                    if sx == x and sy == y or self.collide(sprite):
+                        screen.remove(sprite)
+
+            self.moved = False
+
 
 class BlackQueen(BlackPiece):
     def __init__(self, x, y):
@@ -727,3 +790,72 @@ class BlackKing(BlackPiece):
                     flag = True
 
         return flag
+
+
+class GreenKing(BlackPiece):
+    def __init__(self, x, y):
+        super().__init__(x, y, image='img/GreenKing.png')
+        self.save_x = x
+        self.save_y = y
+
+    def check(self, screen, x1, x2, y1, y2):
+        flag = False
+
+        if x2 == x1 - 1 and y2 == y1:
+            pass
+        elif x2 == x1 + 1 and y2 == y1:
+            pass
+        elif x2 == x1 and y2 == y1 - 1:
+            pass
+        elif x2 == x1 and y2 == y1 + 1:
+            pass
+        elif x2 == x1 - 1 and y2 == y1 + 1:
+            pass
+        elif x2 == x1 + 1 and y2 == y1 + 1:
+            pass
+        elif x2 == x1 - 1 and y2 == y1 - 1:
+            pass
+        elif x2 == x1 + 1 and y2 == y1 - 1:
+            pass
+        else:
+            flag = True
+
+        for sprite in screen:
+            if sprite == self:
+                continue
+
+            if isinstance(sprite, EmptyTile) or isinstance(sprite, BlackPiece):
+                sx, sy = self.toBoardPos(sprite.getX(), sprite.getY())
+                if x2 == sx and y2 == sy:
+                    flag = True
+
+        return flag
+
+    def movePiece(self, x, y):
+        self.save_x, self.save_y = self.toBoardPos(self.getX(), self.getY())
+
+        self.goto(x * WIDTH,
+                  y * HEIGHT + START_HEIGHT)
+        self.moved = True
+
+        self.set()
+
+    def update(self, screen):
+        x, y = self.toBoardPos(self.getX(), self.getY())
+        if self.moved:
+            if not randint(0, 3):
+                screen.append(
+                    GreenKing(self.save_x, self.save_y)
+                )
+            else:
+                screen.append(
+                    BlackKing(self.save_x, self.save_y)
+                )
+
+            for sprite in screen:
+                if isinstance(sprite, WhitePiece):
+                    sx, sy = self.toBoardPos(sprite.getX(), sprite.getY())
+                    if sx == x and sy == y or self.collide(sprite):
+                        screen.remove(sprite)
+
+            self.moved = False
