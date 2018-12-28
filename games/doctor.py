@@ -40,7 +40,7 @@ class Doctor:
         self.state = self.introInit
 
         # uncomment to skip intro
-        # self.transition(self.mainMenuInit, self.mainMenuUpdate)
+        self.transition(self.mainMenuInit, self.mainMenuUpdate)
 
         self.state()
 
@@ -148,8 +148,12 @@ class Doctor:
         if winner:
             print("winner is", winner)
             if winner == "white":
-                if type(self.menu.newestPatient()) is type(self.player):
-                    unlockPatient()
+
+                print(type(self.menu.newestPatient()))
+                print(type(self.player))
+                if type(self.menu.newestPatient()) is type(self.player) and not self.menu.isLastPatient():
+                    self.menu.unlockPatient()
+
             self.transition(self.selectPatientInit,
                             self.selectPatientUpdate)
 

@@ -775,3 +775,196 @@ class Ava(Player):
             # if even(x):
             #     self.screen.append(WhiteQueen(x, 0))
             self.screen.append(WhiteQueen(x, 0))
+
+
+class Noah(Player):
+    def __init__(self, screen):
+        super().__init__(screen,
+                         Sprite(0, START_HEIGHT, image='img/noah_intro.png',
+                                width=SCREEN_WIDTH, height=SCREEN_WIDTH),
+                         [
+                             'img/lucy_speak/hello.png',
+                            #   'img/lucy_speak/i_had_an_episode.png',
+                            #   'img/lucy_speak/i_sat_in_my_room.png',
+                            #   'img/lucy_speak/im_so_sorry.png',
+                            #   'img/lucy_speak/i_grabbed_my_knife.png',
+                            #   'img/lucy_speak/and_i_felt_the_blade.png',
+                            #   'img/lucy_speak/it_made_me_feel_at_home.png',
+                            #   'img/lucy_speak/it_didnt_feel_good.png',
+                            #   'img/lucy_speak/but_it_felt_easier.png',
+                         ])
+
+    def buildGame(self):
+        self.hide()
+        self.screen.clear()
+
+        self.screen.append(
+            Sprite(0, 0, image=BS, width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
+            )
+
+        for x in range(0, BOARD_WIDTH):
+            self.screen.append(
+                Sprite(
+                    x*WIDTH,
+                    BOARD_HEIGHT*WIDTH + START_HEIGHT,
+                    image='img/BorderBottomSide.png',
+                    width=WIDTH,
+                    height=HEIGHT
+                )
+            )
+            self.screen.append(
+                Sprite(
+                    x*WIDTH,
+                    -WIDTH + START_HEIGHT,
+                    image='img/BorderTopSide.png',
+                    width=WIDTH,
+                    height=HEIGHT
+                )
+            )
+
+        for y in range(0, BOARD_HEIGHT):
+            for x in range(0, BOARD_WIDTH):
+                if not y in [int(BOARD_HEIGHT/2), int(BOARD_HEIGHT/2)-1]:
+                    # if not y in [int(BOARD_HEIGHT/2)-1, int(BOARD_HEIGHT/2), int(BOARD_HEIGHT/2)+1]:
+                    self.screen.append(
+                        Tile(
+                            x*WIDTH,
+                            y*WIDTH + START_HEIGHT,
+                            image=WS if (x+y) % 2 == 1 else BS,
+                            width=WIDTH,
+                            height=HEIGHT
+                        )
+                    )
+                else:
+                    if x in [0, 1, 5, 6]:
+                        self.screen.append(
+                            Tile(
+                                x*WIDTH,
+                                y*WIDTH + START_HEIGHT,
+                                image=WS if (x+y) % 2 == 1 else BS,
+                                width=WIDTH,
+                                height=HEIGHT
+                            )
+                        )
+                    else:
+                        if y == int(BOARD_HEIGHT/2)-1:
+                            if x == 0:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderBottomRight.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 2:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderBottomLeft.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 3:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderBottomSide.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 4:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderBottomRight.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 6:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderBottomLeft.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                        else:
+                            if x == 0:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderTopRight.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 2:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderTopLeft.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 3:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderTopSide.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 4:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderTopRight.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+                            if x == 6:
+                                self.screen.append(
+                                    EmptyTile(
+                                        x*WIDTH,
+                                        y*WIDTH + START_HEIGHT,
+                                        image='img/BorderTopLeft.png',
+                                        width=WIDTH,
+                                        height=HEIGHT
+                                    )
+                                )
+        even = lambda n: n%2==0
+        odd = lambda n: n%2==1
+
+        # for x in range(0, 7):
+        #     if odd(x):
+        #         self.screen.append(GreenKnight(x, 7))
+        #     if even(x):
+        #         self.screen.append(GreenKnight(x, 6))
+        self.screen.append(GreenKing(2, 6))
+        self.screen.append(GreenKing(3, 6))
+        self.screen.append(GreenKing(3, 7))
+        self.screen.append(GreenKing(4, 6))
+        
+
+        for x in range(0, 7):
+            self.screen.append(WhiteKnight(x, 1))
+            # if even(x):
+            #     self.screen.append(WhiteQueen(x, 0))
+            self.screen.append(WhiteQueen(x, 0))

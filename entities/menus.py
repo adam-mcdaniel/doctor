@@ -62,8 +62,11 @@ class MainMenu:
 
 class PatientMenu:
     def __init__(self, screen):
-        from .__init__ import NUMBER_OF_PATIENTS_UNLOCKED
+        # from .__init__ import NUMBER_OF_PATIENTS_UNLOCKED
         self.screen = screen
+        self.NUMBER_OF_PATIENTS_UNLOCKED = 1
+        self.readPatientFromFile()
+
         self.screen.append(Sprite(0, (SCREEN_HEIGHT-SCREEN_WIDTH/4),
                                   image="img/choose_patient_top.png", width=SCREEN_WIDTH, height=SCREEN_WIDTH/4))
 
@@ -83,7 +86,7 @@ class PatientMenu:
                              "img/ava.png", "img/ava.png",
                              width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
 
-        print(NUMBER_OF_PATIENTS_UNLOCKED)
+        # print(NUMBER_OF_PATIENTS_UNLOCKED)
         self.selected = None
         self.patients = {
             self.ryan: Ryan(self.screen),
@@ -94,10 +97,14 @@ class PatientMenu:
         }
         self.list_of_patients = list(self.patients.keys())
         self.list_of_patients.remove(None)
-        self.screen.add(self.list_of_patients[:NUMBER_OF_PATIENTS_UNLOCKED])
+        self.screen.add(
+            self.list_of_patients[:self.NUMBER_OF_PATIENTS_UNLOCKED])
 
     def newestPatient(self):
-        return self.list_of_patients[min(NUMBER_OF_PATIENTS_UNLOCKED, len(self.list_of_patients)-1)]
+        return self.patients[self.list_of_patients[min(self.NUMBER_OF_PATIENTS_UNLOCKED-1, len(self.list_of_patients)-1)]]
+
+    def isLastPatient(self):
+        return self.NUMBER_OF_PATIENTS_UNLOCKED == len(self.list_of_patients)
 
     def getPatient(self):
         return self.patients[self.selected]
@@ -106,3 +113,19 @@ class PatientMenu:
         for patient in self.list_of_patients:
             if patient.getPressed():
                 self.selected = patient
+
+    def readPatientFromFile(self):
+        with open("save/number_of_patients_unlocked") as f:
+            self.NUMBER_OF_PATIENTS_UNLOCKED = int(f.read().replace('\n', ''))
+            f.close()
+        print("Read patient: #{}".format(self.NUMBER_OF_PATIENTS_UNLOCKED))
+
+    def unlockPatient(self):
+        print("Old patient: #{}".format(self.NUMBER_OF_PATIENTS_UNLOCKED))
+        self.NUMBER_OF_PATIENTS_UNLOCKED += 1
+        with open("save/number_of_patients_unlocked", 'w') as f:
+            f.write(str(self.NUMBER_OF_PATIENTS_UNLOCKED))
+            f.close()
+
+        self.readPatientFromFile()
+        print("New patient: #{}".format(self.NUMBER_OF_PATIENTS_UNLOCKED))

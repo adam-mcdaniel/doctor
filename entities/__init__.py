@@ -1,19 +1,21 @@
 from easy_mobile.setup import SCREEN_WIDTH, SCREEN_HEIGHT
 
-NUMBER_OF_PATIENTS_UNLOCKED = 1
-with open("save/number_of_patients_unlocked") as f:
-    NUMBER_OF_PATIENTS_UNLOCKED = int(f.read().replace('\n', ''))
-    NUMBER_OF_PATIENTS_UNLOCKED = max(NUMBER_OF_PATIENTS_UNLOCKED, 1)
-    f.close()
+# NUMBER_OF_PATIENTS_UNLOCKED = 1
+# with open("save/number_of_patients_unlocked") as f:
+#     NUMBER_OF_PATIENTS_UNLOCKED = int(f.read().replace('\n', ''))
+#     NUMBER_OF_PATIENTS_UNLOCKED = max(NUMBER_OF_PATIENTS_UNLOCKED, 1)
+#     f.close()
 
 
-def unlockPatient():
-    global NUMBER_OF_PATIENTS_UNLOCKED
-    NUMBER_OF_PATIENTS_UNLOCKED += 1
-    with open("save/number_of_patients_unlocked", 'w') as f:
-        # NUMBER_OF_PATIENTS_UNLOCKED = int(f.read().replace('\n', ''))
-        f.write(str(NUMBER_OF_PATIENTS_UNLOCKED))
-        f.close()
+# def unlockPatient():
+#     global NUMBER_OF_PATIENTS_UNLOCKED
+#     print("Old patient #{}".format(NUMBER_OF_PATIENTS_UNLOCKED))
+#     NUMBER_OF_PATIENTS_UNLOCKED += 1
+#     with open("save/number_of_patients_unlocked", 'w') as f:
+#         # NUMBER_OF_PATIENTS_UNLOCKED = int(f.read().replace('\n', ''))
+#         f.write(str(NUMBER_OF_PATIENTS_UNLOCKED))
+#         print("New patient #{}".format(NUMBER_OF_PATIENTS_UNLOCKED))
+#         f.close()
 
 
 WS = 'img/WhiteSquare.png'
