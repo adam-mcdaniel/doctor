@@ -86,6 +86,10 @@ class PatientMenu:
                              "img/ava.png", "img/ava.png",
                              width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
 
+        self.noah = TapButton(1 * SCREEN_WIDTH/3, (SCREEN_HEIGHT-SCREEN_WIDTH/4)-2*SCREEN_WIDTH/3,
+                              "img/ava.png", "img/ava.png",
+                              width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
+
         # print(NUMBER_OF_PATIENTS_UNLOCKED)
         self.selected = None
         self.patients = {
@@ -93,6 +97,7 @@ class PatientMenu:
             self.mark: Mark(self.screen),
             self.lucy: Lucy(self.screen),
             self.ava:  Ava(self.screen),
+            self.noah: Noah(self.screen),
             None: None
         }
         self.list_of_patients = list(self.patients.keys())

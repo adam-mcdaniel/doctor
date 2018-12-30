@@ -655,10 +655,14 @@ class GreenKnight(BlackPiece):
     def update(self, screen):
         x, y = self.toBoardPos(self.getX(), self.getY())
         if self.moved:
-            screen.append(
-                BlackKing(self.save_x, self.save_y)
-            )
-
+            if not randint(0, 2):
+                screen.append(
+                    GreenKnight(self.save_x, self.save_y)
+                )
+            else:
+                screen.append(
+                    BlackKnight(self.save_x, self.save_y)
+                )
             for sprite in screen:
                 if isinstance(sprite, WhitePiece):
                     sx, sy = self.toBoardPos(sprite.getX(), sprite.getY())
