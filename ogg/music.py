@@ -20,11 +20,11 @@ class MusicManager:
             f.write(str(self.index))
             f.close()
 
-    def update(self): pass
-    if self.music and self.sound.state != 'play':
-        self.index = (self.index + 1) % (len(self.music))
-        print(self.index)
-        self.sound = Sound(self.music[self.index])
-        self.sound.play()
+    def update(self):
+        if self.music and self.sound.state != 'play':
+            self.index = (self.index + 1) % (len(self.music))
+            print(self.index)
+            self.sound = Sound(self.music[self.index])
+            self.sound.play()
 
-        self.saveIndex()
+            self.saveIndex()
