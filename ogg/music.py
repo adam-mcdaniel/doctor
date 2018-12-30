@@ -7,7 +7,7 @@ class MusicManager:
         if music:
             self.index = self.loadIndex()
             self.sound = Sound(self.music[self.index])
-            # self.sound.play()
+            self.sound.play()
 
     def loadIndex(self):
         with open("save/music_index") as f:
@@ -21,10 +21,10 @@ class MusicManager:
             f.close()
 
     def update(self): pass
-    # if self.music and self.sound.state != 'play':
-    #     self.index = (self.index + 1) % (len(self.music))
-    #     print(self.index)
-    #     self.sound = Sound(self.music[self.index])
-    #     self.sound.play()
+    if self.music and self.sound.state != 'play':
+        self.index = (self.index + 1) % (len(self.music))
+        print(self.index)
+        self.sound = Sound(self.music[self.index])
+        self.sound.play()
 
-    #     self.saveIndex()
+        self.saveIndex()
