@@ -87,7 +87,7 @@ class PatientMenu:
                              width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
 
         self.noah = TapButton(1 * SCREEN_WIDTH/3, (SCREEN_HEIGHT-SCREEN_WIDTH/4)-2*SCREEN_WIDTH/3,
-                              "img/ava.png", "img/ava.png",
+                              "img/noah.png", "img/noah.png",
                               width=SCREEN_WIDTH/3, height=SCREEN_WIDTH/3)
 
         # print(NUMBER_OF_PATIENTS_UNLOCKED)

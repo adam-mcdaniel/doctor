@@ -804,16 +804,16 @@ class Noah(Player):
 
         for x in range(0, BOARD_WIDTH):
             self.screen.append(
-                Sprite(
+                EmptyTile(
                     x*WIDTH,
-                    BOARD_HEIGHT*WIDTH + START_HEIGHT,
+                    (BOARD_HEIGHT-1)*WIDTH + START_HEIGHT,
                     image='img/BorderBottomSide.png',
                     width=WIDTH,
                     height=HEIGHT
                 )
             )
             self.screen.append(
-                Sprite(
+                EmptyTile(
                     x*WIDTH,
                     -WIDTH + START_HEIGHT,
                     image='img/BorderTopSide.png',
@@ -822,10 +822,36 @@ class Noah(Player):
                 )
             )
 
-        for y in range(0, BOARD_HEIGHT):
+        for y in range(0, BOARD_HEIGHT-1):
             for x in range(0, BOARD_WIDTH):
-                if not y in [int(BOARD_HEIGHT/2), int(BOARD_HEIGHT/2)-1]:
-                    # if not y in [int(BOARD_HEIGHT/2)-1, int(BOARD_HEIGHT/2), int(BOARD_HEIGHT/2)+1]:
+                if x in [2, 4] and y in [2, 4]:
+                    self.screen.append(
+                        EmptyTile(
+                            x*WIDTH,
+                            y*WIDTH + START_HEIGHT,
+                            image='img/Square.png',
+                            width=WIDTH,
+                            height=HEIGHT
+                        ))
+                elif x in [2, 4]:
+                    self.screen.append(
+                        EmptyTile(
+                            x*WIDTH,
+                            y*WIDTH + START_HEIGHT,
+                            image='img/Column.png',
+                            width=WIDTH,
+                            height=HEIGHT
+                        ))
+                elif y in [2, 4]:
+                    self.screen.append(
+                        EmptyTile(
+                            x*WIDTH,
+                            y*WIDTH + START_HEIGHT,
+                            image='img/Row.png',
+                            width=WIDTH,
+                            height=HEIGHT
+                        ))
+                else:
                     self.screen.append(
                         Tile(
                             x*WIDTH,
@@ -835,129 +861,18 @@ class Noah(Player):
                             height=HEIGHT
                         )
                     )
-                else:
-                    if x in [0, 1, 5, 6]:
-                        self.screen.append(
-                            Tile(
-                                x*WIDTH,
-                                y*WIDTH + START_HEIGHT,
-                                image=WS if (x+y) % 2 == 1 else BS,
-                                width=WIDTH,
-                                height=HEIGHT
-                            )
-                        )
-                    else:
-                        if y == int(BOARD_HEIGHT/2)-1:
-                            if x == 0:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderBottomRight.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 2:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderBottomLeft.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 3:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderBottomSide.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 4:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderBottomRight.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 6:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderBottomLeft.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                        else:
-                            if x == 0:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderTopRight.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 2:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderTopLeft.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 3:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderTopSide.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 4:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderTopRight.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
-                            if x == 6:
-                                self.screen.append(
-                                    EmptyTile(
-                                        x*WIDTH,
-                                        y*WIDTH + START_HEIGHT,
-                                        image='img/BorderTopLeft.png',
-                                        width=WIDTH,
-                                        height=HEIGHT
-                                    )
-                                )
         even = lambda n: n%2==0
         odd = lambda n: n%2==1
 
-        # for x in range(0, 7):
-        #     if odd(x):
-        #         self.screen.append(GreenKnight(x, 7))
-        #     if even(x):
-        #         self.screen.append(GreenKnight(x, 6))
-        self.screen.append(GreenKing(2, 6))
+        # # for x in range(0, 7):
+        # #     if odd(x):
+        # #         self.screen.append(GreenKnight(x, 7))
+        # #     if even(x):
+        # #         self.screen.append(GreenKnight(x, 6))
+        self.screen.append(GreenKnight(5, 5))
+        self.screen.append(WhiteKnight(1, 1))
+        self.screen.append(WhiteKnight(0, 1))
+        self.screen.append(WhiteKnight(1, 0))
         self.screen.append(GreenKing(3, 6))
         self.screen.append(GreenKing(3, 7))
         self.screen.append(GreenKing(4, 6))
